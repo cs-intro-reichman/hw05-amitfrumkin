@@ -9,6 +9,7 @@ public class GameOfLife {
 
 	public static void main(String[] args) {
 		String fileName = args[0];
+		test1(fileName) ; 
 		//// Uncomment the test that you want to execute, and re-compile.
 		//// (Run one test at a time).
 		//// test1(fileName);
@@ -58,13 +59,31 @@ public class GameOfLife {
 	// and the rightmost columns. Thus the actual board is surrounded by a "frame" of zeros. You can think
 	// of this frame as representing the infinite number of dead cells that exist in every direction.
 	// This function assumes that the input file contains valid data, and does no input testing.
+	
 	public static int[][] read(String fileName) {
+		
 		In in = new In(fileName); // Constructs an In object for reading the input file
 		int rows = Integer.parseInt(in.readLine());
 		int cols = Integer.parseInt(in.readLine());
 		int[][] board = new int[rows + 2][cols + 2];
-		//// Replace the following statement with your code.
-		return null;
+		 
+		
+
+		for (int i = 1; i < rows; i++) {
+
+			String line = in.readLine(); //.xxx
+
+			for(int j =0; j  < line.length() ; j++){
+				if(line.charAt(j) == 'x'){
+					board[i][j+1] = 1;
+				}
+			}
+
+
+		}
+
+
+		return board;
 	}
 	
 	// Creates a new board from the given board, using the rules of the game.
@@ -100,7 +119,12 @@ public class GameOfLife {
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
     public static void print(int[][] arr) {
-		//// Write your code here.
+		for (int i = 1; i < arr.length -1; i++) {
+            for (int j = 1; j < arr[i].length -1; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();  // Move to the next line after each row
+        }
 	}
 		
     // Displays the board. Living and dead cells are represented by black and white squares, respectively.
